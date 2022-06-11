@@ -3,22 +3,13 @@ package com.testforwork.AbankTests.controllers;
 import com.testforwork.AbankTests.feign.GIFBrokeRich;
 import com.testforwork.AbankTests.feign.JSONExchangeRate;
 import com.testforwork.AbankTests.feign.JSONGifBrokeRich;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.math.BigDecimal;
-import java.net.URL;
 import java.time.LocalDate;
 
 @RequestMapping("/benefits")
@@ -48,13 +39,13 @@ public class CustomerController {
 
         int compare = yesterdayRate.compareTo(todayRate);
 
+        String objectString;
         if(compare > 0){
-            String objectString = brokeRich.getRich();
-            return getImage(objectString);
+            objectString = brokeRich.getRich();
         } else {
-            String objectString = brokeRich.getBroke();
-            return getImage(objectString);
+            objectString = brokeRich.getBroke();
         }
+        return getImage(objectString);
     }
 
     private byte[] getImage(String JSON){
