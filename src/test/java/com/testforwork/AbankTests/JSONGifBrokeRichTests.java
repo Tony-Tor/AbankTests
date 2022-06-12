@@ -4,6 +4,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import com.testforwork.AbankTests.feign.JSONGifBrokeRich;
 import com.testforwork.AbankTests.mocks.GifBrokeRichMock;
 import org.json.JSONObject;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,6 +31,12 @@ public class JSONGifBrokeRichTests {
     @BeforeEach
     void setUp() throws IOException {
         GifBrokeRichMock.setupMockResponse(mockExchangeService);
+        mockExchangeService.start();
+    }
+
+    @AfterEach
+    void setDown(){
+        mockExchangeService.stop();
     }
 
     @Test

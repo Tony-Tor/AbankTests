@@ -46,12 +46,12 @@ public class GIFBrokeRichTests {
 
     @Test
     public void noEmptyTest() {
-        Assertions.assertTrue(brokeRichClient.getGif("giphy").length > 0);
+        Assertions.assertTrue(brokeRichClient.getGif("MFO8414YmatCXigf8x").length > 0);
     }
 
     @Test
     public void equalsTest() {
-        byte[] bytes = brokeRichClient.getGif("giphy");
+        byte[] bytes = brokeRichClient.getGif("MFO8414YmatCXigf8x");
 
         try {
             byte[] bytesExpected = StreamUtils.copyToString(

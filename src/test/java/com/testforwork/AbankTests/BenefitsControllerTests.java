@@ -9,6 +9,7 @@ import com.testforwork.AbankTests.mocks.BrokeRichMock;
 import com.testforwork.AbankTests.mocks.ExchangeRateMock;
 import com.testforwork.AbankTests.mocks.GifBrokeRichMock;
 import org.json.JSONException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -49,6 +50,12 @@ public class BenefitsControllerTests {
         BrokeRichMock.setupMockResponse(mockExchangeService);
         ExchangeRateMock.setupMockResponse(mockExchangeService);
         GifBrokeRichMock.setupMockResponse(mockExchangeService);
+        mockExchangeService.start();
+    }
+
+    @AfterEach
+    void setDown(){
+        mockExchangeService.stop();
     }
 
     @Test()
