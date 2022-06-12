@@ -7,7 +7,6 @@ Perform the following steps before starting:
 
 Tests Gradle tasks:verification:test  
 
-Create application.properties
 Build Gradle tasks:build:bootJar
 
 Create and connect a Docker daemon
