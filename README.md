@@ -10,7 +10,7 @@ Build Gradle tasks:build:bootJar
 
 Create and connect a Docker daemon
 
-Rum ./docker-compose.yml;
+Run ./docker-compose.yml;
 
 Settings
 =
