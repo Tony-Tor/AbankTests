@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 @RequestMapping("/benefits")
 @RestController
-public class CustomerController {
+public class BenefitsController {
 
     @Autowired
     private JSONExchangeRate rate;
@@ -26,7 +26,7 @@ public class CustomerController {
     private GIFBrokeRich gifs;
 
     @GetMapping(value = "/{currency}", produces = "image/gif")
-    public byte[] getCustomerById(@PathVariable String currency){
+    public byte[] getBenefitsGif(@PathVariable String currency){
         String todayRatesJSON = rate.getToday();
         String yesterday = LocalDate.now().minusDays(1).toString();
         String yesterdayRatesJSON = rate.getYesterday(yesterday);
