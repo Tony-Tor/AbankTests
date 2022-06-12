@@ -42,6 +42,7 @@ Using the service is very simple, you only need to substitute the value from the
 |/benefits/{currency}|Getting gif-emotions for {currency} exchange rate|
 
 Possible {currency} values:
+
 |-|-|-|-|-|-|
 |:--|:--|:--|:--|:--|:--|
 |AED|CLP|HRK|MDL|RUB|UYU|
