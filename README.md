@@ -7,6 +7,10 @@ Perform the following steps before starting:
 
 Tests Gradle tasks:verification:test  
 
+Don't forget to add your appid to the settings:
+- application.app_id.giphy,
+- application.app_id.openexchange
+
 Build Gradle tasks:build:bootJar
 
 Create and connect a Docker daemon
