@@ -2,6 +2,7 @@ package com.testforwork.AbankTests;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.testforwork.AbankTests.controllers.BenefitsController;
+import com.testforwork.AbankTests.exception.ServiceNotFoundException;
 import com.testforwork.AbankTests.feign.GIFBrokeRich;
 import com.testforwork.AbankTests.feign.JSONExchangeRate;
 import com.testforwork.AbankTests.feign.JSONGifBrokeRich;
@@ -62,7 +63,7 @@ public class BenefitsControllerTests {
     void wrongRequest() {
         try {
             benefitsController.getBenefitsGif("dsfdfsfds");
-        }catch (JSONException e){
+        }catch (ServiceNotFoundException e){
             Assertions.assertTrue(true);
             return;
         }

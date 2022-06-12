@@ -13,4 +13,8 @@ public interface JSONGifBrokeRich {
     @RequestMapping(method = RequestMethod.GET, value = "?" +
             "api_key=${application.app_id.giphy}&tag=${application.setting.tag.broke}&rating=${application.setting.rating}", produces = "application/json")
     String getBroke();
+
+    @RequestMapping(method = RequestMethod.GET, value = "?" +
+            "api_key=${application.app_id.giphy}&tag=${application.setting.tag.not_found}&rating=${application.setting.rating}", produces = "application/json")
+    String getNotFound();
 }

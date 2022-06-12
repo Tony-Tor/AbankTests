@@ -1,8 +1,10 @@
 package com.testforwork.AbankTests.controllers;
 
+import com.testforwork.AbankTests.exception.ServiceNotFoundException;
 import com.testforwork.AbankTests.feign.GIFBrokeRich;
 import com.testforwork.AbankTests.feign.JSONExchangeRate;
 import com.testforwork.AbankTests.feign.JSONGifBrokeRich;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +39,14 @@ public class BenefitsController {
 
         JSONObject todayObject = new JSONObject(todayRatesJSON).getJSONObject("rates");
         JSONObject yesterdayObject = new JSONObject(yesterdayRatesJSON).getJSONObject("rates");
-
-        BigDecimal todayRate = todayObject.getBigDecimal(currency);
-        BigDecimal yesterdayRate = yesterdayObject.getBigDecimal(currency);
+        BigDecimal todayRate;
+        BigDecimal yesterdayRate;
+        try {
+            todayRate = todayObject.getBigDecimal(currency);
+            yesterdayRate = yesterdayObject.getBigDecimal(currency);
+        } catch (JSONException e){
+            throw new ServiceNotFoundException("Unknown currency");
+        }
 
         int compare = yesterdayRate.compareTo(todayRate);
         logger.info("getBenefitsGif" + todayRate + "-" + yesterdayRate);
