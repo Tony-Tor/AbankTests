@@ -4,6 +4,7 @@ import com.testforwork.AbankTests.feign.GIFBrokeRich;
 import com.testforwork.AbankTests.feign.JSONExchangeRate;
 import com.testforwork.AbankTests.feign.JSONGifBrokeRich;
 import org.json.JSONObject;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,9 @@ import java.time.LocalDate;
 @RequestMapping("/benefits")
 @RestController
 public class BenefitsController {
+
+    @Autowired
+    private Logger logger;
 
     @Autowired
     private JSONExchangeRate rate;
@@ -38,7 +42,7 @@ public class BenefitsController {
         BigDecimal yesterdayRate = yesterdayObject.getBigDecimal(currency);
 
         int compare = yesterdayRate.compareTo(todayRate);
-
+        logger.info("getBenefitsGif" + todayRate + "-" + yesterdayRate);
         String objectString;
         if(compare > 0){
             objectString = brokeRich.getRich();

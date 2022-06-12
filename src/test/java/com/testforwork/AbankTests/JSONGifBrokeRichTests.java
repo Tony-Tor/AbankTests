@@ -45,8 +45,15 @@ public class JSONGifBrokeRichTests {
     }
 
     @Test
-    public void wireMockTest() {
+    public void richTest() {
         String json = gifBrokeRichClient.getRich();
+        String object = new JSONObject(json).getJSONObject("data").getString("id");
+        Assertions.assertEquals(object, "MFO8414YmatCXigf8x");
+    }
+
+    @Test
+    public void brokeTest() {
+        String json = gifBrokeRichClient.getBroke();
         String object = new JSONObject(json).getJSONObject("data").getString("id");
         Assertions.assertEquals(object, "MFO8414YmatCXigf8x");
     }

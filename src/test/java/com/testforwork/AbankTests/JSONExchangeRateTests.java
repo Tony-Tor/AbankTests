@@ -16,6 +16,7 @@ import org.springframework.test.context.TestPropertySource;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -45,8 +46,17 @@ public class JSONExchangeRateTests {
     }
 
     @Test
-    public void wireMockTest() {
+    public void todayTest() {
         String json = exchangeClient.getToday();
+        JSONObject todayObject = new JSONObject(json).getJSONObject("rates");
+        BigDecimal todayRate = todayObject.getBigDecimal("RUB");
+        Assertions.assertEquals(todayRate, new BigDecimal("57.624893"));
+    }
+
+    @Test
+    public void yesterdayTest() {
+        String yesterday = LocalDate.now().minusDays(1).toString();
+        String json = exchangeClient.getYesterday(yesterday);
         JSONObject todayObject = new JSONObject(json).getJSONObject("rates");
         BigDecimal todayRate = todayObject.getBigDecimal("RUB");
         Assertions.assertEquals(todayRate, new BigDecimal("57.624893"));
