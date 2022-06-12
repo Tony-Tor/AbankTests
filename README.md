@@ -44,7 +44,7 @@ Using the service is very simple, you only need to substitute the value from the
 Possible {currency} values:
 
 |AED|CLP|HRK|MDL|RUB|UYU|
-|:--|:--|:--|:--|:--|:--|
+|:---|:---|:---|:---|:---|:---|
 |AFN|CNH|HTG|MGA|RWF|UZS|
 |ALL|CNY|HUF|MKD|SAR|VES|
 |AMD|COP|IDR|MMK|SBD|VND|
